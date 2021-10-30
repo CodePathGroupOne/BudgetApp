@@ -86,12 +86,13 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
    => Transactions
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="WalletBud-initial-wireframe.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
+<img src="WalletBud-digital-wireframe.png" width=1000>
 
 ### [BONUS] Interactive Prototype
+<img src="WalletBud-prototype-walkthrough.gif" width=200>
 
 ## Schema 
 [This section will be completed in Unit 9]
