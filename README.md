@@ -102,14 +102,22 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
    | ------------- | -------- | ------------|
    | UserId      | String   | unique user id (default field) |
    | UserName        | String | User name for login |
-   | Email         | String     | user email |
-   | Password       | String   | user password |
-   | Date of Birth | DateTime   | user date of birth |
+   | Email         | String     | user's email |
+   | Password       | String   | user's password |
+   | Date of Birth | DateTime   | user's date of birth |
    | First Name    | String   | user's first name |
    | Last Name     | String | user's last name |
+  
+   
+#### User_Setting
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | ObjectId      | String   | unique  id  for the setting(default field) |
+   | User        |Pointer to User | user's settings |
    | Notification | Boolean | user's preference on notification |
    | FaceID    | Boolean | user's preference on using faceId for signin |
-   
+   | CurrentNetWorth    | Number | user's current net worth |
    
 #### HashTags
 
@@ -131,7 +139,7 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
    | Transaction Vendor | String   | Vendor where the transaction occured |
    | Transaction date    | DateTime   | Date when transaction occured |
 
-#### Budgets
+#### Budget
 
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
@@ -142,10 +150,159 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
    | Month Year | DateTime   | Month and year for which the budget is for |
 
 
-   
-   
-
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
+- Login Screen
+  - (Read/GET) Check if username and password is valid
+       ``` swift
+        PFUser.logInWithUsername(inBackground: username, password: password){
+            (user,error) in
+            if user != nil {
+              // let the user try again and show error.
+            } else {
+              // Hooray! Let them use the app now.
+            }
+        }
+       ```
+- SignUp Screen
+  - (Create/POST) SignUp a new user
+    ``` swift
+       PFUser.signUpInBackground {(success: Bool, error: Error?) in
+          if  success  {
+            // Show the errorString somewhere and let the user try again.
+          } else {
+            // Hooray! Let them use the app now.
+          }
+        }
+    ```
+- Transaction Screen
+   - (Read/GET) Query transactions of the user  
+     ``` swift
+            let query = PFQuery(className:"Transactions")
+             query.whereKey("User", equalTo: currentUser)
+             query.order(byDescending: " Transaction_date ")
+             query.findObjectsInBackground { (transactions: [PFObject]?, error: Error?) in
+                if let error = error { 
+                   print(error.localizedDescription)
+                } else if let transactions = transactions {    
+               // TODO: Do something with transactions...
+                }
+             }
+        ```
+         
+    - (Update/PUT) Update transactions
+        ``` swift
+            let query = PFQuery(className:"Transactions")
+            query.getObjectInBackground(withId: "xWMyZEGZ") { (transactions: PFObject?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let transactions = transactions {
+               // Update transactions info
+                transactions.saveInBackground()
+            }
+        ```
+    - (Delete) Delete existing transaction
+       ```swift
+          PFObject.deleteAll(inBackground: objectArray) { (succeeded, error) in
+          if (succeeded) {
+              // The array of objects was successfully deleted.
+          } else {
+              // There was an error. Check the errors localizedDescription.
+          }
+          }
+       ```
+ - Budget Screen
+    - (Create/POST) Create a budget object for the month 
+    ``` swift
+      let budget = PFObject(className:"Budget")
+     // populate budget object
+      budget.saveInBackground { (succeeded, error)  in
+          if (succeeded) {
+              // The object has been saved.
+          } else {
+              // There was a problem, check error.description
+          }
+      }
+    ```
+    - (Update/PUT) Update Budget
+        ``` swift
+            let query = PFQuery(className:"Budget")
+            query.getObjectInBackground(withId: "xWMyZEGZ") { (budget: PFObject?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let budget = budget {
+               // Update budget info
+                budget.saveInBackground()
+            }
+        ```
+    - (Read/GET) Get my Budget
+      ```swift
+         let query = PFQuery(className:"Budget")
+         query.whereKey("User", equalTo: currentUser)
+         query.whereKey("Month Year", equalTo: currentMonth)
+         query.findObjectsInBackground { (budget: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let budget = budget {
+  
+           // TODO: View budget...
+            }
+         }
+       ```
+- Overview Screen
+    - (Read/GET) Read transactions   
+        ```swift
+             let query = PFQuery(className:"Transactions")
+             query.whereKey("User", equalTo: currentUser)
+             query.order(byDescending: " Transaction_date ")
+             query.findObjectsInBackground { (transactions: [PFObject]?, error: Error?) in
+                if let error = error { 
+                   print(error.localizedDescription)
+                } else if let transactions = transactions {
+               // TODO: Do something with transactions.
+                }
+             }
+        ```
+    - (Read/GET) Read Budget
+       ```swift
+         let query = PFQuery(className:"Budget")
+         query.whereKey("User", equalTo: currentUser)
+         query.whereKey("Month Year", equalTo: currentMonth)
+         query.findObjectsInBackground { (budget: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let budget = budget {
+  
+           // TODO: Do something with budget...
+            }
+         }
+       ```
+- Setting Screen
+     - (Update/Put) Update settings based on user selection
+       ``` swift
+            let query = PFQuery(className:"User_Setting")
+            query.getObjectInBackground(withId: "xWMyZEGZ") { (setting: PFObject?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let setting = setting {
+               // Update setting info
+                setting.saveInBackground()
+            }
+        ```
+     - (Read/Get) Get Current selection
+        ```swift
+         let query = PFQuery(className:"User_Setting")
+         query.whereKey("User", equalTo: currentUser)
+
+         query.findObjectsInBackground { (setting: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let setting = setting {
+  
+           // TODO: Update UI based on retrived object
+            }
+         }
+       ```
+         
+
+
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
