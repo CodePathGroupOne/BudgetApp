@@ -95,9 +95,56 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 <img src="WalletBud-prototype-walkthrough.gif" width=200>
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+#### Users
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | UserId      | String   | unique user id (default field) |
+   | UserName        | String | User name for login |
+   | Email         | String     | user email |
+   | Password       | String   | user password |
+   | Date of Birth | DateTime   | user date of birth |
+   | First Name    | String   | user's first name |
+   | Last Name     | String | user's last name |
+   | Notification | Boolean | user's preference on notification |
+   | FaceID    | Boolean | user's preference on using faceId for signin |
+   
+   
+#### HashTags
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user defined hashtag per user (default field) |
+   | User        | Pointer to User | user who created the hashtag  |
+   | Hashtag         |    String  | Title of the hashtag |
+   
+   
+#### Transactions
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user transaction (default field) |
+   | User        | Pointer to User | user who created the transaction |
+   | Hashtag         | Pointer to HashTag     | hashtag defining user's transaction |
+   | Amount       | Number   | transaction amount |
+   | Transaction Vendor | String   | Vendor where the transaction occured |
+   | Transaction date    | DateTime   | Date when transaction occured |
+
+#### Budgets
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the budget (default field) |
+   | User        | Pointer to User | user who created the budget |
+   | Hashtag         | Pointer to HashTag     | hashtag that define the type of budget |
+   | Budget Amount       | Number   | budget amount for the hashtag |
+   | Month Year | DateTime   | Month and year for which the budget is for |
+
+
+   
+   
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
