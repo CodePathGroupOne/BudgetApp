@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30218EEF27483A12006B1714 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30218EEE27483A12006B1714 /* OverviewViewController.swift */; };
 		305B42FC273713E200EE87A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B42FB273713E200EE87A0 /* AppDelegate.swift */; };
 		305B42FE273713E200EE87A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B42FD273713E200EE87A0 /* SceneDelegate.swift */; };
 		305B4303273713E200EE87A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305B4301273713E200EE87A0 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		0D31A22B2977CDD79CAE866F /* Pods-WalletBud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletBud.release.xcconfig"; path = "Target Support Files/Pods-WalletBud/Pods-WalletBud.release.xcconfig"; sourceTree = "<group>"; };
 		196E995C23A379DA9AA52B26 /* Pods-WalletBudTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletBudTests.debug.xcconfig"; path = "Target Support Files/Pods-WalletBudTests/Pods-WalletBudTests.debug.xcconfig"; sourceTree = "<group>"; };
+		30218EEE27483A12006B1714 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		305B42F8273713E200EE87A0 /* WalletBud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalletBud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		305B42FB273713E200EE87A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		305B42FD273713E200EE87A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				305B4306273713F000EE87A0 /* LaunchScreen.storyboard */,
 				305B4309273713F000EE87A0 /* Info.plist */,
 				308FD345273F867F000DB7B3 /* LoginViewController.swift */,
+				30218EEE27483A12006B1714 /* OverviewViewController.swift */,
 			);
 			path = WalletBud;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				308FD346273F867F000DB7B3 /* LoginViewController.swift in Sources */,
+				30218EEF27483A12006B1714 /* OverviewViewController.swift in Sources */,
 				305B42FC273713E200EE87A0 /* AppDelegate.swift in Sources */,
 				305B42FE273713E200EE87A0 /* SceneDelegate.swift in Sources */,
 			);
