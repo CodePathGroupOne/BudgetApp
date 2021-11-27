@@ -15,8 +15,35 @@ class OverviewViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+   /*
+    // Read transactions
+    let query = PFQuery(className:"Transactions")
+    query.whereKey("User", equalTo: currentUser)
+    query.order(byDescending: " Transaction_date ")
+    query.findObjectsInBackground { (transactions: [PFObject]?, error: Error?) in
+       if let error = error {
+          print(error.localizedDescription)
+       } else if let transactions = transactions {
+      // TODO: Do something with transactions.
+       }
+    }
 
+    
+    // Read Budget
+    let query = PFQuery(className:"Budget")
+    query.whereKey("User", equalTo: currentUser)
+    query.whereKey("Month Year", equalTo: currentMonth)
+    query.findObjectsInBackground { (budget: [PFObject]?, error: Error?) in
+       if let error = error {
+          print(error.localizedDescription)
+       } else if let budget = budget {
+
+      // TODO: Do something with budget...
+       }
+    }
+*/
+    
+    
     /*
     // MARK: - Navigation
 

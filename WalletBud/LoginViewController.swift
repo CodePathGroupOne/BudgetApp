@@ -31,6 +31,18 @@ class LoginViewController: UIViewController {
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 } else {
                     print("Error with sign in: \(String(describing: error?.localizedDescription))")
+                    /*if (String(describing: error:.localizedDescription)) == "Invalid username/password."
+                    {
+                        let alert = UIAlertController(title: "Your username or password is invalid.", message: "", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    else {
+                    */
+                    let alert = UIAlertController(title: "There was an error signing in to your account.", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    //}
                 }
             }
     }
@@ -46,6 +58,9 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
                 print("Error: \(String(describing: error?.localizedDescription))")
+                let alert = UIAlertController(title: "There was an error creating your account.", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                self.present(alert, animated: true)
             }
         }
         
