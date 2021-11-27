@@ -17,6 +17,8 @@
 		305B431D273713F200EE87A0 /* WalletBudUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B431C273713F200EE87A0 /* WalletBudUITests.swift */; };
 		305B431F273713F200EE87A0 /* WalletBudUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B431E273713F200EE87A0 /* WalletBudUITestsLaunchTests.swift */; };
 		308FD346273F867F000DB7B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308FD345273F867F000DB7B3 /* LoginViewController.swift */; };
+		30910E0D2750592A002B6CED /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30910E0C2750592A002B6CED /* TransactionsViewController.swift */; };
+		30910E1127505975002B6CED /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30910E1027505975002B6CED /* BudgetViewController.swift */; };
 		79BB084A87AFD36CADB6FED5 /* Pods_WalletBudTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA0BCB6668052E321B57CE6 /* Pods_WalletBudTests.framework */; };
 		7A86D088370071A2726293EB /* Pods_WalletBud_WalletBudUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708A258BD93718C0A4EE9513 /* Pods_WalletBud_WalletBudUITests.framework */; };
 		FAE2A56DDAADF9D393EEA7DE /* Pods_WalletBud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49398BF76756FBFBE96B541 /* Pods_WalletBud.framework */; };
@@ -56,6 +58,8 @@
 		305B431C273713F200EE87A0 /* WalletBudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBudUITests.swift; sourceTree = "<group>"; };
 		305B431E273713F200EE87A0 /* WalletBudUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBudUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		308FD345273F867F000DB7B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		30910E0C2750592A002B6CED /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionsViewController.swift; path = "/Users/rj/Development/CodePath iOS/BudgetApp/WalletBud/TransactionsViewController.swift"; sourceTree = "<absolute>"; };
+		30910E1027505975002B6CED /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		5547561C7D880D5F9FF915CA /* Pods-WalletBud-WalletBudUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletBud-WalletBudUITests.debug.xcconfig"; path = "Target Support Files/Pods-WalletBud-WalletBudUITests/Pods-WalletBud-WalletBudUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		708A258BD93718C0A4EE9513 /* Pods_WalletBud_WalletBudUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalletBud_WalletBudUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E607382897893ED7DDE8E4D /* Pods-WalletBud-WalletBudUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletBud-WalletBudUITests.release.xcconfig"; path = "Target Support Files/Pods-WalletBud-WalletBudUITests/Pods-WalletBud-WalletBudUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				305B4309273713F000EE87A0 /* Info.plist */,
 				308FD345273F867F000DB7B3 /* LoginViewController.swift */,
 				30218EEE27483A12006B1714 /* OverviewViewController.swift */,
+				30910E0C2750592A002B6CED /* TransactionsViewController.swift */,
+				30910E1027505975002B6CED /* BudgetViewController.swift */,
 			);
 			path = WalletBud;
 			sourceTree = "<group>";
@@ -428,9 +434,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				308FD346273F867F000DB7B3 /* LoginViewController.swift in Sources */,
+				30910E1127505975002B6CED /* BudgetViewController.swift in Sources */,
 				30218EEF27483A12006B1714 /* OverviewViewController.swift in Sources */,
 				305B42FC273713E200EE87A0 /* AppDelegate.swift in Sources */,
 				305B42FE273713E200EE87A0 /* SceneDelegate.swift in Sources */,
+				30910E0D2750592A002B6CED /* TransactionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +616,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2WJ6W8B5SX;
@@ -616,6 +625,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -637,6 +647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2WJ6W8B5SX;
@@ -645,6 +656,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

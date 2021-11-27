@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Check if the user is currently logged in, and if so, take them to the Overview Screen.
         if PFUser.current() != nil {
             let main = UIStoryboard(name: "Main", bundle: nil)
-            let overviewNavigationController = main.instantiateViewController(withIdentifier: "Overview")
+            let overviewNavigationController = main.instantiateViewController(withIdentifier: "OverviewViewController")
             window?.rootViewController = overviewNavigationController
         }
     }
