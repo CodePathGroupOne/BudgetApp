@@ -15,6 +15,43 @@ class BudgetViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    /*
+    // Create a budget object for the month
+    let budget = PFObject(className:"Budget")
+   // populate budget object
+    budget.saveInBackground { (succeeded, error)  in
+        if (succeeded) {
+            // The object has been saved.
+        } else {
+            // There was a problem, check error.description
+        }
+    }
+
+    // Update Budget
+    let query = PFQuery(className:"Budget")
+    query.getObjectInBackground(withId: "xWMyZEGZ") { (budget: PFObject?, error: Error?) in
+    if let error = error {
+        print(error.localizedDescription)
+    } else if let budget = budget {
+       // Update budget info
+        budget.saveInBackground()
+    }
+    }
+    
+    // Get my budget
+    let query = PFQuery(className:"Budget")
+    query.whereKey("User", equalTo: currentUser)
+    query.whereKey("Month Year", equalTo: currentMonth)
+    query.findObjectsInBackground { (budget: [PFObject]?, error: Error?) in
+       if let error = error {
+          print(error.localizedDescription)
+       } else if let budget = budget {
+
+      // TODO: View budget...
+       }
+    }
+*/
+    
     
 
     /*
