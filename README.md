@@ -24,7 +24,7 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 
 **Required Must-have Stories**
 
-* User can create a new account
+- [x] User can create a new account
 - [x] User can login to their account and stay signed in
 * User can add a transaction with a pre-defined hash tag
 * User can set up a monthly budget
@@ -307,9 +307,11 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
-### Current Progress - Unit 11 Milestone
-<img src="unit11-milestone2.gif" width=200>
+### Current Progress - Unit 12 Milestone
+<img src="unit12-milestone3.gif" width=200>
 
+### Unit 11 Milestone
+<img src="unit11-milestone2.gif" width=200>
 
 ### Unit 10 Milestone
 <img src="unit10-milestone1.gif" width=200>
