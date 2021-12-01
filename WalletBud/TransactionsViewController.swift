@@ -8,12 +8,46 @@
 import UIKit
 import Parse
 
-class TransactionsViewController: UIViewController, UITableViewDelegate {
+class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var tableView: UITableView!
+    
+    var transactions = [PFObject]()
+    var selectedTransaction: PFObject!
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return transactions.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let transaction = transactions[section]
+        return transactions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let transaction = transactions[indexPath.section]
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
+            
+            let user = transaction["user"] as! PFUser
+            
+            let transactionText = transaction["payee"] as! String
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
+            return cell
+        }
+    }
+    
  
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()

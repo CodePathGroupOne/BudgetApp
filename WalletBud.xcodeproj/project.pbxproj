@@ -16,6 +16,8 @@
 		305B4313273713F200EE87A0 /* WalletBudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B4312273713F200EE87A0 /* WalletBudTests.swift */; };
 		305B431D273713F200EE87A0 /* WalletBudUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B431C273713F200EE87A0 /* WalletBudUITests.swift */; };
 		305B431F273713F200EE87A0 /* WalletBudUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B431E273713F200EE87A0 /* WalletBudUITestsLaunchTests.swift */; };
+		308F7C8827572F7000C645DE /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308F7C8727572F7000C645DE /* TransactionCell.swift */; };
+		308F7C8A275731B900C645DE /* AddTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308F7C89275731B900C645DE /* AddTransactionCell.swift */; };
 		308FD346273F867F000DB7B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308FD345273F867F000DB7B3 /* LoginViewController.swift */; };
 		30910E0D2750592A002B6CED /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30910E0C2750592A002B6CED /* TransactionsViewController.swift */; };
 		30910E1127505975002B6CED /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30910E1027505975002B6CED /* BudgetViewController.swift */; };
@@ -57,6 +59,8 @@
 		305B4318273713F200EE87A0 /* WalletBudUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalletBudUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		305B431C273713F200EE87A0 /* WalletBudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBudUITests.swift; sourceTree = "<group>"; };
 		305B431E273713F200EE87A0 /* WalletBudUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBudUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		308F7C8727572F7000C645DE /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		308F7C89275731B900C645DE /* AddTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTransactionCell.swift; sourceTree = "<group>"; };
 		308FD345273F867F000DB7B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		30910E0C2750592A002B6CED /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionsViewController.swift; path = "/Users/rj/Development/CodePath iOS/BudgetApp/WalletBud/TransactionsViewController.swift"; sourceTree = "<absolute>"; };
 		30910E1027505975002B6CED /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				305B42FB273713E200EE87A0 /* AppDelegate.swift */,
 				305B42FD273713E200EE87A0 /* SceneDelegate.swift */,
 				305B4301273713E200EE87A0 /* Main.storyboard */,
+				308F7C8727572F7000C645DE /* TransactionCell.swift */,
+				308F7C89275731B900C645DE /* AddTransactionCell.swift */,
 				305B4304273713F000EE87A0 /* Assets.xcassets */,
 				305B4306273713F000EE87A0 /* LaunchScreen.storyboard */,
 				305B4309273713F000EE87A0 /* Info.plist */,
@@ -433,7 +439,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308F7C8827572F7000C645DE /* TransactionCell.swift in Sources */,
 				308FD346273F867F000DB7B3 /* LoginViewController.swift in Sources */,
+				308F7C8A275731B900C645DE /* AddTransactionCell.swift in Sources */,
 				30910E1127505975002B6CED /* BudgetViewController.swift in Sources */,
 				30218EEF27483A12006B1714 /* OverviewViewController.swift in Sources */,
 				305B42FC273713E200EE87A0 /* AppDelegate.swift in Sources */,
@@ -627,7 +635,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -658,7 +665,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
