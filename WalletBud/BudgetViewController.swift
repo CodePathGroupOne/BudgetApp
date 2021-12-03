@@ -14,6 +14,13 @@ class BudgetViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let barAppearance = UINavigationBarAppearance()
+        
+        barAppearance.configureWithOpaqueBackground()
+        barAppearance.backgroundColor = UIColor(named: "GreenBar")!
+        
+        navigationController?.navigationBar.standardAppearance = barAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
     }
     /*
     // Create a budget object for the month

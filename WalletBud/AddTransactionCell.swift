@@ -11,29 +11,15 @@ import Parse
 class AddTransactionCell: UITableViewCell {
     
     // These are for the Add Transactions screen
-
-    @IBAction func nameField(_ sender: Any) {
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var amountField: UITextField!
+    @IBOutlet weak var dateField: UIDatePicker!
+    @IBOutlet weak var accountField: UITextField!
+    @IBOutlet weak var testBudgetMenu1: UIMenu!
+    @IBOutlet weak var testBudgetMenu2: UIMenu!
+    
+    @IBAction func onCancelButton(_ sender: UIBarButtonItem) {
     }
-    
-    @IBAction func amountField(_ sender: Any) {
-    }
-    
-    @IBAction func dateField(_ sender: Any) {
-    }
-    
-    
-    @IBAction func accountField(_ sender: Any) {
-    }
-    
-    @IBAction func testBudgetMenu1(_ sender: Any) {
-    }
-    
-    @IBAction func testBudgetMenu2(_ sender: Any) {
-    }
-    
-    @IBAction func notesField(_ sender: Any) {
-    }
-    
     
     @IBAction func onAddButton(_ sender: Any) {
         // Create the budget
@@ -44,17 +30,13 @@ class AddTransactionCell: UITableViewCell {
         */
         // Create the transaction
         let newTransaction = PFObject(className:"Transaction")
-        newTransaction["payee"] = nameField(_:)
+        newTransaction["payee"] = nameField.text
         
         // Add a relation between the Transaction and Budget
-        newTransaction["budget"] = testBudgetMenu1(_:)
+        //newTransaction["budget"] = testBudgetMenu1(_:)
         
         // This will save both newTransaction and newBudget
         newTransaction.saveInBackground()
-        
-    }
-    
-    @IBAction func onCancelButton(_ sender: Any) {
     }
     
     

@@ -9,16 +9,20 @@ import UIKit
 import Parse
 
 class OverviewViewController: UIViewController {
-
-    @IBAction func sampleButton(_ sender: Any) {
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let barAppearance = UINavigationBarAppearance()
+        
+        barAppearance.configureWithOpaqueBackground()
+        barAppearance.backgroundColor = UIColor(named: "GreenBar")!
+        
+        navigationController?.navigationBar.standardAppearance = barAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
     }
+    
    /*
     // Read transactions
     let query = PFQuery(className:"Transactions")

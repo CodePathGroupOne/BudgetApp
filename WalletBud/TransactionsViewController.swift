@@ -40,27 +40,22 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
             return cell
         }
     }
-    
  
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let barAppearance = UINavigationBarAppearance()
+        
+        barAppearance.configureWithOpaqueBackground()
+        barAppearance.backgroundColor = UIColor(named: "GreenBar")!
+        
+        navigationController?.navigationBar.standardAppearance = barAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
+        
         tableView.delegate = self
         tableView.dataSource = self
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .red
-        
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
-    
-    
-    
-    
     
     /*
     // Query transactions of the user

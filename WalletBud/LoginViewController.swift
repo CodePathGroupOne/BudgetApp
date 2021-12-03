@@ -23,6 +23,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let barAppearance = UINavigationBarAppearance()
+        
+        barAppearance.configureWithOpaqueBackground()
+        barAppearance.backgroundColor = UIColor(named: "GreenBar")!
+        
+        navigationController?.navigationBar.standardAppearance = barAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
     }
 
     @IBAction func onSignin(_ sender: Any) {
