@@ -33,10 +33,10 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 
 **Optional Nice-to-have Stories**
 
-* User can search transactions based on hashtags or text
-* User can add new hashtags for their budget
-* User can linked their bank account/credit cards that automatically pulls all the transactions to the app.
-* User can enter recurring transactions automatically that applies to a user defined frequency (weekly, biweekly or monthly) and also a user defined duration. These transactions could include utilities, tuitions etc. 
+- [ ] User can search transactions based on hashtags or text
+- [ ] User can add new hashtags for their budget
+- [ ] User can linked their bank account/credit cards that automatically pulls all the transactions to the app.
+- [ ] User can enter recurring transactions automatically that applies to a user defined frequency (weekly, biweekly or monthly) and also a user defined duration. These transactions could include utilities, tuitions etc. 
 
 ### 2. Screen Archetypes
 
