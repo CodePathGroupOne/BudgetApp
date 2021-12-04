@@ -8,11 +8,17 @@
 import UIKit
 import Parse
 
-class BudgetViewController: UIViewController {
+class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource{
+    @IBOutlet weak var tableView: UITableView!
+    
+    var hashtags = [PFObject]()
+    
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
         let barAppearance = UINavigationBarAppearance()
         
@@ -21,6 +27,32 @@ class BudgetViewController: UIViewController {
         
         navigationController?.navigationBar.standardAppearance = barAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let query = PFQuery(className: "Common_hashtags")
+        query.findObjectsInBackground { (hashtags,error) in
+            if hashtags != nil {
+                self.hashtags = hashtags!
+                self.tableView.reloadData()
+            }
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return hashtags.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetCell") as! BudgetCell
+        
+        let common_hashtags = hashtags[indexPath.row]
+        let hashtag  = common_hashtags["Hashtag"] as! String
+        cell.HashTagLabel.text = hashtag
+        
+        return cell
     }
     /*
     // Create a budget object for the month
