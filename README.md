@@ -54,7 +54,7 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 * Budget Screen
     * User sets up their budget based on the predefined hashtag and assign a maximum limit to each category (aka hashtag)
 * Settings Screen
-  * User can change their username and/or password
+  * User can change their password
   * User can adjust other user details such as their name
   * User can set up their notification preferences
   * User can allow iPhone authentication method (such as FaceID or TouchID) to sign into the app.
