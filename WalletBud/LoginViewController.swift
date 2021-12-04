@@ -30,12 +30,15 @@ class LoginViewController: UIViewController {
         
         navigationController?.navigationBar.standardAppearance = barAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
+        
     }
 
     @IBAction func onSignin(_ sender: Any) {
         self.indicator.startAnimating()
-        PFUser.logInWithUsername(inBackground: usernameField.text!, password: passwordField.text!) {
-            (user: PFUser?, error: Error?) -> Void in
+        let username = usernameField.text!
+        let password = passwordField.text!
+        PFUser.logInWithUsername(inBackground: username, password: password) {
+            (user,error)  in
             if user != nil {
                 self.indicator.stopAnimating()
                 print("Successful login into account: \(String(self.usernameField.text!))")
@@ -57,26 +60,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func onSignup(_ sender: Any) {
-        let user = PFUser()
-        user.username = usernameField.text!
-        user.password = passwordField.text!
-        
-        self.indicator.startAnimating()
-        user.signUpInBackground { (succeeded: Bool, error: Error?) -> Void in
-            if let error = error {
-                print("Error with sign up: \(String(describing: error.localizedDescription))")
-                self.displayAlert(withTitle: "There was an error creating your account.", message: error.localizedDescription)
-                self.indicator.stopAnimating()
-            } else {
-                print("Signed up for an account with username \(String(self.usernameField.text!))")
-                //print("Signed up for an account with username \(String(username)) and email \(String(email))")
-                self.indicator.stopAnimating()
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            }
-        }
-        //self.performSegue(withIdentifier: "signupSegue", sender: nil)
-    }
     
     func displayAlert(withTitle title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -84,21 +67,5 @@ class LoginViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    
-    @IBAction func onCompleteSignup(_ sender: Any) {
-        let user = PFUser()
-//        let email = emailField.text!
-        
-//        user.email = emailField.text
 
-        user.signUpInBackground { (success, error) in
-            if success {
-                print("Signed up!")
-                //print("Signed up for an account with username \(String(username)) and email \(String(email))")
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            } else {
-                print("Error: \(String(describing: error?.localizedDescription))")
-            }
-        }
-    }
 }
