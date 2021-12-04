@@ -26,9 +26,10 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 
 - [x] User can create a new account
 - [x] User can login to their account and stay signed in
-* User can add a transaction with a pre-defined hash tag
-* User can set up a monthly budget
-* User can edit their monthly budget to be applied to the current month or following months.
+- [ ] User can add a transaction with a pre-defined hash tag
+- [ ] User can set up a monthly budget
+- [ ] User can edit their monthly budget to be applied to the current month or following months.
+- [ ] User can sign out
 
 **Optional Nice-to-have Stories**
 
