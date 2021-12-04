@@ -308,7 +308,10 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
-### Current Progress - Unit 12 Milestone
+### Current Progress - Unit 13 Milestone
+<img src="unit13-milestone4.gif" width=200>
+
+### Unit 12 Milestone
 <img src="unit12-milestone3.gif" width=200>
 
 ### Unit 11 Milestone
