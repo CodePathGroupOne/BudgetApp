@@ -10,19 +10,31 @@ import Parse
 
 class OverviewViewController: UIViewController {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("I am here")
         // Do any additional setup after loading the view.
-        let barAppearance = UINavigationBarAppearance()
+        /*let barAppearance = UINavigationBarAppearance()
         
         barAppearance.configureWithOpaqueBackground()
         barAppearance.backgroundColor = UIColor(named: "GreenBar")!
         
         navigationController?.navigationBar.standardAppearance = barAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
+         */
     }
     
+    @IBAction func onSignOut(_ sender: Any) {
+        print("Click")
+        PFUser.logOut()
+               let main = UIStoryboard(name: "Main", bundle: nil)
+               let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
+               guard  let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let delegate = windowScene.delegate as? SceneDelegate else { return}
+               
+               delegate.window?.rootViewController = loginViewController
+    }
+
    /*
     // Read transactions
     let query = PFQuery(className:"Transactions")

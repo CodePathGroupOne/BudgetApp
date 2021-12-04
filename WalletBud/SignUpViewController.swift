@@ -33,8 +33,7 @@ class SignUpViewController: UIViewController {
         user["dob"] = dobField.date
         user["firstName"] = firstnameField.text!
         user["lastName"] = lastNameField.text!
-        print(user.email)
-        print(user["dob"])
+        
         
        user.signUpInBackground { (succeeded: Bool, error: Error?) -> Void in
             if let error = error {
