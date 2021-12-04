@@ -12,21 +12,54 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     
     var hashtags = [PFObject]()
-    
-  
+    var hashtags_budget = [Decimal]()
+    //Getting current month
+    var month_year = [String]()
+    var current_month = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        month_year = getCurrentMonthAndYear()
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+        
+        let bartitle = "Budget - " + month_year[0]
+        
+        let year_month = month_year[0] + " " + month_year[1]
+        current_month = stringToDate(year_month)!
+        //print(current_month)
+        
+        
+        self.navigationItem.title = bartitle
         let barAppearance = UINavigationBarAppearance()
         
         barAppearance.configureWithOpaqueBackground()
         barAppearance.backgroundColor = UIColor(named: "GreenBar")!
+
         
         navigationController?.navigationBar.standardAppearance = barAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
+    }
+    
+    func getCurrentMonthAndYear() -> Array<String>{
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: now)
+        dateFormatter.dateFormat = "yyyy"
+        let yearString = dateFormatter.string(from: now)
+        
+        return [nameOfMonth,yearString]
+    }
+    
+    func stringToDate(_ date: String) -> Date? {
+        let df = DateFormatter()
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
+        df.dateFormat = "LLLL yyyy"
+        df.date(from: date)
+
+        return df.date(from: date)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,30 +74,103 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hashtags.count
+    @objc func textFieldDidChange(_ sender: UITextField!) {
+        let tableRow = sender.tag
+        let formatter = NumberFormatter()
+       
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = NumberFormatter.Style.decimal
+        
+        if let formattedNumber = formatter.number(from: sender.text!) as? NSDecimalNumber  {
+            hashtags_budget[tableRow] = formattedNumber as Decimal
+        }else {
+            hashtags_budget[tableRow] = 0
+        }
+        
     }
     
+    @IBAction func onBudgetUpdate(_ sender: Any) {
+        print("This button is working")
+        let currentUser:PFUser = PFUser.current()!
+        
+        for i in 0...self.hashtags.count-1{
+            createBudget(currentUser: currentUser, hashtag: self.hashtags[i], hashtag_budget: self.hashtags_budget[i])
+        }
+    
+    }
+    
+    func createBudget(currentUser: PFUser, hashtag: PFObject, hashtag_budget: Decimal) {
+        // Create a budget object for the month
+        let budget = PFObject(className:"Budget")
+       // populate budget object
+        /*print(currentUser)
+        print(hashtag)
+        print(hashtag_budget)
+         */
+        budget["User"] = currentUser
+        budget["Hashtag"] = hashtag
+        budget["Budget_Amount"] = hashtag_budget
+       
+        budget["Year_Month"] = current_month
+      
+        budget.saveInBackground { (succeeded, error)  in
+            if (succeeded) {
+                // The object has been saved.
+                print("Object has been saved")
+            } else {
+                // There was a problem, check error.description
+                print (":Error Saving budget")
+            }
+        }
+
+    }
+    func getCurrentMonthBudget(year: String,month: String){
+        // Get current budget
+        let currentUser:PFUser = PFUser.current()!
+        let query = PFQuery(className:"Budget")
+        query.whereKey("User", equalTo: currentUser)
+        
+        let year_month = year + " " + month
+        //print(year_month)
+        let currentMonth = stringToDate(year_month)
+        
+        query.whereKey("Month Year", equalTo: currentMonth)
+        query.findObjectsInBackground { (budget: [PFObject]?, error: Error?) in
+           if let error = error {
+              print(error.localizedDescription)
+           } else if let budget = budget {
+
+         // return budget
+           }
+        }
+        
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        for _ in 0...hashtags.count{
+                hashtags_budget.append(0.00)
+        }
+        return hashtags.count
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetCell") as! BudgetCell
         
         let common_hashtags = hashtags[indexPath.row]
         let hashtag  = common_hashtags["Hashtag"] as! String
         cell.HashTagLabel.text = hashtag
+       
+        cell.budgettextField.tag = indexPath.row
+        cell.budgettextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         return cell
     }
+    
+  
+    
+    
     /*
-    // Create a budget object for the month
-    let budget = PFObject(className:"Budget")
-   // populate budget object
-    budget.saveInBackground { (succeeded, error)  in
-        if (succeeded) {
-            // The object has been saved.
-        } else {
-            // There was a problem, check error.description
-        }
-    }
+  
 
     // Update Budget
     let query = PFQuery(className:"Budget")
@@ -77,18 +183,7 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     }
     }
     
-    // Get my budget
-    let query = PFQuery(className:"Budget")
-    query.whereKey("User", equalTo: currentUser)
-    query.whereKey("Month Year", equalTo: currentMonth)
-    query.findObjectsInBackground { (budget: [PFObject]?, error: Error?) in
-       if let error = error {
-          print(error.localizedDescription)
-       } else if let budget = budget {
-
-      // TODO: View budget...
-       }
-    }
+    
 */
     
     
