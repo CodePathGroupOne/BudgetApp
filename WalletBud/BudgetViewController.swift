@@ -13,6 +13,7 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     
     var hashtags = [PFObject]()
     var hashtags_budget = [Decimal]()
+    var budget_id = [String]()
     //Getting current month
     var month_year = [String]()
     var current_month = Date()
@@ -90,13 +91,52 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func onBudgetUpdate(_ sender: Any) {
-        print("This button is working")
+        //print("This button is working")
         let currentUser:PFUser = PFUser.current()!
+        let query = PFQuery(className:"Budget")
         
-        for i in 0...self.hashtags.count-1{
-            createBudget(currentUser: currentUser, hashtag: self.hashtags[i], hashtag_budget: self.hashtags_budget[i])
+        query.whereKey("User", equalTo: currentUser)
+        query.whereKey("Year_Month", equalTo: current_month)
+        query.limit = 1
+     
+        
+        do {
+            let budget = try query.findObjects()
+            if (budget.count > 0){
+                for i in 0...self.hashtags.count-1{
+                    updateBudget(id: self.budget_id[i], budget_amount: self.hashtags_budget[i])
+                }
+                
+            }else{
+                for i in 0...self.hashtags.count-1{
+                    createBudget(currentUser: currentUser, hashtag: self.hashtags[i], hashtag_budget: self.hashtags_budget[i])
+                }
+                
+            }
+            
+        }
+        catch {
+            print(error)
+            
         }
         
+        
+        
+       
+    }
+    
+    func updateBudget(id:String, budget_amount: Decimal){
+        // Update Budget
+        let query = PFQuery(className:"Budget")
+        query.getObjectInBackground(withId: id) { (budget: PFObject?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let budget = budget {
+                // Update budget info
+                budget["Budget_Amount"] = budget_amount
+                budget.saveInBackground()
+            }
+        }
     }
     
     func createBudget(currentUser: PFUser, hashtag: PFObject, hashtag_budget: Decimal) {
@@ -124,7 +164,7 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         }
         
     }
-    func getCurrentMonthBudgetByHashTag(hashtag: PFObject) -> Decimal{
+    func getCurrentMonthBudgetByHashTag(hashtag: PFObject, tableRow: Int) -> Decimal{
         
         var res = Decimal(-1)
         
@@ -142,7 +182,7 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
             let budget = try query.findObjects()
             if (budget.count > 0){
                 let val = budget[0]["Budget_Amount"] as! Double
-                
+                self.budget_id[tableRow] = budget[0].objectId as! String
                 res = Decimal(val)
                 
             }
@@ -162,6 +202,7 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         for _ in 0...hashtags.count{
             hashtags_budget.append(Decimal(0.00))
+            budget_id.append("a")
         }
         return hashtags.count
     }
@@ -172,7 +213,7 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         
         let common_hashtags = hashtags[indexPath.row]
         //print(common_hashtags)
-        var budgetAmount = getCurrentMonthBudgetByHashTag(hashtag: common_hashtags)
+        var budgetAmount = getCurrentMonthBudgetByHashTag(hashtag: common_hashtags, tableRow: indexPath.row)
         
         let hashtag  = common_hashtags["Hashtag"] as! String
         cell.HashTagLabel.text = hashtag
