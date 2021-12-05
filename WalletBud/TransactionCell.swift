@@ -9,11 +9,12 @@ import UIKit
 
 class TransactionCell: UITableViewCell {
     
+    @IBOutlet weak var vendorLabel: UILabel!
     // These are for the Transactions screen
-    @IBOutlet weak var transactionLabel: UILabel!
-    @IBOutlet weak var budgetLabelButton: UIButton!
-    @IBOutlet weak var accountLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var hashtagLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var expenseAmount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

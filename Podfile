@@ -7,6 +7,8 @@ target 'WalletBud' do
 
   # Pods for WalletBud
   pod 'Parse'
+ pod 'DropDown'
+
   target 'WalletBudTests' do
     inherit! :search_paths
     # Pods for testing
@@ -16,6 +18,7 @@ target 'WalletBud' do
   target 'WalletBudUITests' do
     # Pods for testing
     pod 'Parse'
+   
   end
 
 end
