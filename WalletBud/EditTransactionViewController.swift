@@ -90,13 +90,14 @@ class EditTransactionViewController: UIViewController {
                 updatetransaction["hashTag"] = self.hashtagobject[self.hashtagselectedindex]
                 // Update budget info
                 updatetransaction.saveInBackground()
-                //Show some error to user 
+                //Show some error to user
                 self.dismiss(animated: true, completion: nil)
                 
             }
         }
     }
         @IBAction func deleteTransaction(_ sender: Any) {
+            transaction.deleteInBackground()
         }
         /*
          // MARK: - Navigation
