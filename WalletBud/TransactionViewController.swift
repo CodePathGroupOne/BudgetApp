@@ -78,6 +78,15 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
     }
     
+    @IBAction func onSignOut(_ sender: Any) {
+        print("Click")
+        PFUser.logOut()
+               let main = UIStoryboard(name: "Main", bundle: nil)
+               let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
+               guard  let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let delegate = windowScene.delegate as? SceneDelegate else { return}
+               
+               delegate.window?.rootViewController = loginViewController
+    }
 
     
     // MARK: - Navigation
@@ -92,8 +101,8 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         let transaction = transactions[indexPath.row]
      
         // Pass the selected object to the new view controller.
-        let editTransactionViewController = segue.destination as! EditTransactionViewController
-        editTransactionViewController.transaction = transaction
+        //let editTransactionViewController = segue.destination as! EditTransactionViewController
+        //editTransactionViewController.transaction = transaction
             }
     }
     
