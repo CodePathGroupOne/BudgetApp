@@ -20,18 +20,36 @@ class AddTransactionViewController: UIViewController {
     @IBOutlet weak var transactionDateField: UIDatePicker!
     @IBOutlet weak var amountField: UITextField!
     
-    var hashtagSelected = String()
+    var hashtagobject = [PFObject]()
     let categoriesdropDown =  DropDown()
-    let categoriesArray = [
-        "Item1",
-        "Item2",
-        "Item4",
-        "Item5"
-        
+    var categoriesArray = [
+      "Loading","Loading",
+      "Loading","Loading",
+      "Loading","Loading",
+      "Loading","Loading",
+      "Loading","Loading",
         ]
-      
+    
+    var hashtagselectedindex = Int()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let query = PFQuery(className: "Common_hashtags")
+        query.findObjectsInBackground { (hashtags,error) in
+            if hashtags != nil {
+                print(hashtags!)
+                self.hashtagobject = hashtags!
+                for i in 0...self.hashtagobject.count-1{
+                    self.categoriesArray[i] = self.hashtagobject[i]["Hashtag"] as! String
+                }
+                self.categoriesdropDown.dataSource = self.categoriesArray
+                self.ddView.reloadInputViews()
+            }
+            
+        }
+    }
     
     override func viewDidLoad() {
+        print("asdjblksahdkas")
         super.viewDidLoad()
         categoriesdropDown.anchorView = ddView
         categoriesdropDown.dataSource = categoriesArray
@@ -41,7 +59,7 @@ class AddTransactionViewController: UIViewController {
         categoriesdropDown.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
             dwLabel.text = categoriesArray[index]
-            hashtagSelected = categoriesArray[index]
+            hashtagselectedindex = index
         }
         // Do any additional setup after loading the view.
     }
@@ -52,7 +70,7 @@ class AddTransactionViewController: UIViewController {
         transaction["Transaction_vendor"] = vendorField.text!
         transaction["Transaction_date"] = transactionDateField.date
         transaction["User"] = PFUser.current()!
-        transaction["hashTag"] = hashtagSelected
+        transaction["hashTag"] = self.hashtagobject[hashtagselectedindex]
         transaction.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
