@@ -56,7 +56,7 @@ class AddTransactionViewController: UIViewController {
         transaction.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
-                print("Object has been saved")
+                print("Transaction has been saved")
             } else {
                 // There was a problem, check error.description
                 print (":Error Saving transaction")
