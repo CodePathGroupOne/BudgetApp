@@ -49,7 +49,7 @@ class AddTransactionViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        print("asdjblksahdkas")
+
         super.viewDidLoad()
         categoriesdropDown.anchorView = ddView
         categoriesdropDown.dataSource = categoriesArray
