@@ -51,11 +51,11 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         let dateString = dateFormatter.string(from: trans_date )
      
     
-        cell.vendorLabel.text = transaction["Transaction_vendor"] as! String
+        cell.vendorLabel.text = transaction["Transaction_vendor"] as? String
         cell.dateLabel.text = nameOfMonth + " " + dateString//transaction[]
        
         cell.expenseAmount.text = String(format: "%.2f", (transaction["Amount"] as! Double))
-        cell.hashtagLabel.text = hashtag as! String
+        cell.categoryButton.setTitle(hashtag as? String, for: .normal)
         
         return cell
     }

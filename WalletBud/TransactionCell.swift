@@ -9,9 +9,9 @@ import UIKit
 
 class TransactionCell: UITableViewCell {
     
-    @IBOutlet weak var vendorLabel: UILabel!
     // These are for the Transactions screen
-    @IBOutlet weak var hashtagLabel: UILabel!
+    @IBOutlet weak var vendorLabel: UILabel!
+    @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var expenseAmount: UILabel!
