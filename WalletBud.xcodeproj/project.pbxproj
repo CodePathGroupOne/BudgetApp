@@ -25,6 +25,7 @@
 		7A86D088370071A2726293EB /* Pods_WalletBud_WalletBudUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708A258BD93718C0A4EE9513 /* Pods_WalletBud_WalletBudUITests.framework */; };
 		9F43ED58275B280D00C53DF7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F43ED57275B280D00C53DF7 /* SettingsViewController.swift */; };
 		9F87CBE9275D61250046C5AB /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87CBE8275D61250046C5AB /* TransactionViewController.swift */; };
+		9F87CBEB275DB8950046C5AB /* EditTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87CBEA275DB8950046C5AB /* EditTransactionViewController.swift */; };
 		9FB8A54C275BF1DA0029F9E5 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8A54B275BF1DA0029F9E5 /* BudgetCell.swift */; };
 		9FE4E3C5275AF89F00669051 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4E3C4275AF89F00669051 /* SignUpViewController.swift */; };
 		FAE2A56DDAADF9D393EEA7DE /* Pods_WalletBud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49398BF76756FBFBE96B541 /* Pods_WalletBud.framework */; };
@@ -75,6 +76,7 @@
 		9EA0BCB6668052E321B57CE6 /* Pods_WalletBudTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalletBudTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F43ED57275B280D00C53DF7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9F87CBE8275D61250046C5AB /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		9F87CBEA275DB8950046C5AB /* EditTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionViewController.swift; sourceTree = "<group>"; };
 		9FB8A54B275BF1DA0029F9E5 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
 		9FE4E3C4275AF89F00669051 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DF7854D27296652235A6B0C2 /* Pods-WalletBudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletBudTests.release.xcconfig"; path = "Target Support Files/Pods-WalletBudTests/Pods-WalletBudTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				305B42FD273713E200EE87A0 /* SceneDelegate.swift */,
 				305B4301273713E200EE87A0 /* Main.storyboard */,
 				9F87CBE8275D61250046C5AB /* TransactionViewController.swift */,
+				9F87CBEA275DB8950046C5AB /* EditTransactionViewController.swift */,
 				9FB8A54B275BF1DA0029F9E5 /* BudgetCell.swift */,
 				30C5BA30275A071F00B5D750 /* AddTransactionViewController.swift */,
 				9FE4E3C4275AF89F00669051 /* SignUpViewController.swift */,
@@ -452,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				308F7C8827572F7000C645DE /* TransactionCell.swift in Sources */,
+				9F87CBEB275DB8950046C5AB /* EditTransactionViewController.swift in Sources */,
 				9FB8A54C275BF1DA0029F9E5 /* BudgetCell.swift in Sources */,
 				308FD346273F867F000DB7B3 /* LoginViewController.swift in Sources */,
 				308F7C8A275731B900C645DE /* AddTransactionCell.swift in Sources */,
