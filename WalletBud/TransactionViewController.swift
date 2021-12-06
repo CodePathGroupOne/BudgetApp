@@ -75,7 +75,8 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        let isBarButton = ( sender is UIBarButtonItem ? false : true)
+            if (isBarButton) {
         // Get the new view controller using segue.destination.
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)!
@@ -84,6 +85,7 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         // Pass the selected object to the new view controller.
         let editTransactionViewController = segue.destination as! EditTransactionViewController
         editTransactionViewController.transaction = transaction
+            }
     }
     
 

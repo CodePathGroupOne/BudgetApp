@@ -549,7 +549,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Overview" id="EIE-la-rCm">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="hnV-OP-KKZ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="hnV-OP-KKZ">
+                            <connections>
+                                <action selector="onSignOut:" destination="mxD-Ox-LmG" id="omw-Ok-5rw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXq-UG-Egm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
