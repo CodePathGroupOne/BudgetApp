@@ -9,8 +9,10 @@ import UIKit
 
 class BudgetCell: UITableViewCell {
 
+    
     @IBOutlet weak var budgettextField: UITextField!
-    @IBOutlet weak var HashTagLabel: UILabel!
+    @IBOutlet weak var categoryButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

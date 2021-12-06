@@ -213,10 +213,10 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         
         let common_hashtags = hashtags[indexPath.row]
         //print(common_hashtags)
-        var budgetAmount = getCurrentMonthBudgetByHashTag(hashtag: common_hashtags, tableRow: indexPath.row)
+        let budgetAmount = getCurrentMonthBudgetByHashTag(hashtag: common_hashtags, tableRow: indexPath.row)
         
-        let hashtag  = common_hashtags["Hashtag"] as! String
-        cell.HashTagLabel.text = hashtag
+        let hashtag  = common_hashtags["Hashtag"] as? String
+        cell.categoryButton.setTitle(hashtag, for: .normal)
         
         if (budgetAmount > Decimal(-1)) {
             //print("I am here")
