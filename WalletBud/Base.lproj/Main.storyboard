@@ -208,6 +208,7 @@
                                             <outlet property="dateLabel" destination="yJ5-Js-a4l" id="wD8-mh-qmY"/>
                                             <outlet property="expenseAmount" destination="kzb-AV-2Lw" id="Jne-Wg-V9f"/>
                                             <outlet property="vendorLabel" destination="2f5-uQ-hU4" id="bMp-hB-qnl"/>
+                                            <segue destination="pPj-qR-bVG" kind="show" id="wnQ-Io-EMo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -507,6 +508,19 @@
                     <view key="view" contentMode="scaleToFill" id="Bbt-YP-Cq4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ykf-9C-VW9">
+                                <rect key="frame" x="0.0" y="108" width="375" height="284"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Fx-DA-i0I">
+                                <rect key="frame" x="0.0" y="381" width="375" height="316"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <color key="tintColor" systemColor="quaternarySystemFillColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RiQ-Nv-IcW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -517,17 +531,21 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bottomView" destination="0Fx-DA-i0I" id="GLM-JP-Ebl"/>
+                        <outlet property="topView" destination="Ykf-9C-VW9" id="XK0-da-Jhe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXq-UG-Egm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5024.6376811594209" y="849.77678571428567"/>
+            <point key="canvasLocation" x="5023.1999999999998" y="849.7536945812808"/>
         </scene>
         <!--Edit Transaction View Controller-->
         <scene sceneID="phV-Zj-B4O">
             <objects>
                 <viewController id="pPj-qR-bVG" customClass="EditTransactionViewController" customModule="WalletBud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hcP-Z9-Lbn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vendor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-dS-zAk">
@@ -1158,14 +1176,31 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+<<<<<<< Updated upstream
+=======
+        <systemColor name="quaternarySystemFillColor">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+>>>>>>> Stashed changes
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+<<<<<<< Updated upstream
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+=======
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+>>>>>>> Stashed changes
         </systemColor>
     </resources>
 </document>
