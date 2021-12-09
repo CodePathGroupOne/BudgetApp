@@ -15,7 +15,7 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let currentUser:PFUser = PFUser.current()!
@@ -23,7 +23,7 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         query.includeKey("hashTag")
         query.whereKey("User", equalTo: currentUser)
         query.addDescendingOrder("Transaction_date")
-        query.limit = 4
+        query.limit = 10
         query.findObjectsInBackground{
             (result,error) in
             if error == nil {
@@ -35,10 +35,10 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
             }
         }
     }
-        
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
-
+        
         let transaction = transactions[indexPath.row]
         let hashtag = (transaction["hashTag"] as! PFObject)["Hashtag"]!
         
@@ -46,22 +46,22 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLLL"
         let nameOfMonth = dateFormatter.string(from: trans_date )
-       
+        
         dateFormatter.dateFormat = "dd"
         let dateString = dateFormatter.string(from: trans_date )
-     
-    
+        
+        
         cell.vendorLabel.text = transaction["Transaction_vendor"] as? String
         cell.dateLabel.text = nameOfMonth + " " + dateString//transaction[]
-       
+        
         cell.expenseAmount.text = String(format: "%.2f", (transaction["Amount"] as! Double))
         cell.categoryButton.setTitle(hashtag as? String, for: .normal)
         
         return cell
     }
     
-  
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -78,34 +78,24 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
     }
     
-    @IBAction func onSignOut(_ sender: Any) {
-        print("Click")
-        PFUser.logOut()
-               let main = UIStoryboard(name: "Main", bundle: nil)
-               let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
-               guard  let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let delegate = windowScene.delegate as? SceneDelegate else { return}
-               
-               delegate.window?.rootViewController = loginViewController
-    }
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let isBarButton = ( sender is UIBarButtonItem ? false : true)
-        print(isBarButton)
-            if (isBarButton) {
-        // Get the new view controller using segue.destination.
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)!
-        let transaction = transactions[indexPath.row]
-     
-        // Pass the selected object to the new view controller.
-        //let editTransactionViewController = segue.destination as! EditTransactionViewController
-        //editTransactionViewController.transaction = transaction
-            }
+        if (isBarButton) {
+            // Get the new view controller using segue.destination.
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)!
+            let transaction = transactions[indexPath.row]
+       
+            // Pass the selected object to the new view controller.
+            let editTransactionViewController = segue.destination as! EditTransactionViewController
+            editTransactionViewController.transaction = transaction
+        }
     }
     
-
+    
 }

@@ -9,7 +9,7 @@ import UIKit
 import Parse
 import DropDown
 
-class EditTransactionTableViewController: UITableViewController, UITextFieldDelegate {
+class EditTransactionViewController: UIViewController {
     
     @IBOutlet weak var vendorField: UITextField!
     @IBOutlet weak var date: UIDatePicker!
@@ -17,7 +17,7 @@ class EditTransactionTableViewController: UITableViewController, UITextFieldDele
     @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var notesField: UITextView!
     
-    @IBOutlet weak var categoryDropDownView: UIView!
+   
     @IBOutlet weak var categoryButton: UIButton!
     
     var categoryLabel: String!
@@ -48,7 +48,7 @@ class EditTransactionTableViewController: UITableViewController, UITextFieldDele
                                     self.categoriesArray[i] = self.hashtagobject[i]["Hashtag"] as! String
                                     if(self.hashtagobject[i].objectId == (self.transaction["hashTag"] as! PFObject).objectId){
                                         self.hashtagselectedindex = i
-                                        cell.categoryButton.setTitle(self.hashtagobject[i]["Hashtag"] as! String, for: .normal)
+                                        self.categoryButton.setTitle(self.hashtagobject[i]["Hashtag"] as! String, for: .normal)
                                         //self.dropdownLabel.text = self.hashtagobject[i]["Hashtag"] as! String
                                     }
                                 }
@@ -61,9 +61,8 @@ class EditTransactionTableViewController: UITableViewController, UITextFieldDele
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(transaction)
-        
-        Amount.text = String(describing: transaction["Amount"]!)
+        let transaction_amount = transaction["Amount"]!
+        Amount.text = String(describing: transaction_amount)
         vendorField.text = transaction["Transaction_vendor"] as? String
         date.date = transaction["Transaction_date"] as! Date
         
@@ -79,8 +78,9 @@ class EditTransactionTableViewController: UITableViewController, UITextFieldDele
             //dropdownLabel.text = categoriesArray[index]
             hashtagselectedindex = index
         }
+         
         // Do any additional setup after loading the view.
-    }!
+    }
     
     @IBAction func onDropDown(_ sender: Any) {
         categoriesdropDown.show()
@@ -110,15 +110,7 @@ class EditTransactionTableViewController: UITableViewController, UITextFieldDele
     
     let rowsAndSections = [["0,0", "0,1"], ["1,0"], ["2,0", "2,1"]]
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return rowsAndSections[section].count
-    }
+
         /*
          // MARK: - Navigation
          

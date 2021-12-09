@@ -7,9 +7,9 @@ target 'WalletBud' do
 
   # Pods for WalletBud
   pod 'Parse'
- pod 'DropDown'
-pod 'IQKeyboardManagerSwift'
-pod 'Charts'
+  pod 'DropDown'
+  pod 'IQKeyboardManagerSwift'
+  pod 'Charts'
 
   target 'WalletBudTests' do
     inherit! :search_paths
