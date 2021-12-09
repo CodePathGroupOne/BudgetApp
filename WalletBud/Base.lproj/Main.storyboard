@@ -900,7 +900,7 @@
                                 <rect key="frame" x="0.0" y="-27" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="LrX-dn-nu0">
-                                    <rect key="frame" x="0.0" y="110.33333206176758" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="110" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <items>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WjE-PN-qww"/>
@@ -990,7 +990,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vbZ-b2-MNi">
-                            <rect key="frame" x="0.0" y="382.66667175292969" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="383" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="5sA-Ja-beT"/>
