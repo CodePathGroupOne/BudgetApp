@@ -8,9 +8,10 @@
 import UIKit
 import Parse
 
-class SettingsViewController: UIViewController {
+class SettingsTableViewController: UITableViewController {
 
-   
+    @IBOutlet var settingsTableView: UITableView!
+    
     @IBAction func onSignOut(_ sender: Any) {
      
         PFUser.logOut()
@@ -24,6 +25,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.tableView.contentInset.bottom = 100
     }
     
 
