@@ -10,7 +10,7 @@ import Parse
 
 class TransactionViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     var transactions = [PFObject]()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
@@ -33,6 +33,13 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
             else{
                 print("There is an issue retrieveing recent transactions. ")
             }
+        }
+        clearOnAppearance()
+    }
+    
+    func clearOnAppearance() {
+        for indexPath in tableView.indexPathsForSelectedRows ?? [] {
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
@@ -60,12 +67,11 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         return cell
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         // Do any additional setup after loading the view.
         
         let barAppearance = UINavigationBarAppearance()
@@ -76,6 +82,9 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         
         navigationController?.navigationBar.standardAppearance = barAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
+        
+        clearOnAppearance()
+        self.tableView.reloadData()
     }
     
     
@@ -84,18 +93,18 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let isBarButton = ( sender is UIBarButtonItem ? false : true)
-        if (isBarButton) {
-            // Get the new view controller using segue.destination.
-            let cell = sender as! UITableViewCell
-            let indexPath = tableView.indexPath(for: cell)!
-            let transaction = transactions[indexPath.row]
-       
-            // Pass the selected object to the new view controller.
-            let editTransactionViewController = segue.destination as! EditTransactionViewController
-            editTransactionViewController.transaction = transaction
+            let isBarButton = ( sender is UIBarButtonItem ? false : true)
+            if (isBarButton) {
+                // Get the new view controller using segue.destination.
+                let cell = sender as! UITableViewCell
+                let indexPath = tableView.indexPath(for: cell)!
+                let transaction = transactions[indexPath.row]
+           
+                // Pass the selected object to the new view controller.
+                let editTransactionViewController = segue.destination as! EditTransactionViewController
+                editTransactionViewController.transaction = transaction
+            }
         }
-    }
     
     
 }

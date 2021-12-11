@@ -65,6 +65,7 @@ class EditTransactionViewController: UIViewController {
         Amount.text = String(describing: transaction_amount)
         vendorField.text = transaction["Transaction_vendor"] as? String
         date.date = transaction["Transaction_date"] as! Date
+        notesField.text = transaction["notes"] as? String
         
         
         categoriesdropDown.anchorView = categoryView
@@ -96,6 +97,7 @@ class EditTransactionViewController: UIViewController {
                 updatetransaction["Transaction_vendor"] = self.vendorField.text!
                 updatetransaction["Transaction_date"] = self.date.date
                 updatetransaction["hashTag"] = self.hashtagobject[self.hashtagselectedindex]
+                updatetransaction["notes"] = self.notesField.text!
                 // Update budget info
                 updatetransaction.saveInBackground()
                 //Show some error to user
@@ -104,9 +106,23 @@ class EditTransactionViewController: UIViewController {
             }
         }
     }
-        @IBAction func deleteTransaction(_ sender: Any) {
-            transaction.deleteInBackground()
+    @IBAction func deleteTransaction(_ sender: Any) {
+            let alert = UIAlertController(title: "Are you sure you want to delete this transaction?", message: "", preferredStyle: .actionSheet)
+            
+            let deleteAction = UIAlertAction(title: "Delete Transaction", style: .destructive) { (action) in
+                self.transaction.deleteInBackground()
+                self.dismiss(animated: true, completion: nil)
+                print(action)}
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
         }
+    
+    @IBAction func onCancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     let rowsAndSections = [["0,0", "0,1"], ["1,0"], ["2,0", "2,1"]]
     

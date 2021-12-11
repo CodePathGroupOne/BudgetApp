@@ -26,9 +26,9 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 
 - [x] User can create a new account
 - [x] User can login to their account and stay signed in
-- [ ] User can add a transaction with a pre-defined hash tag
-- [ ] User can set up a monthly budget
-- [ ] User can edit their monthly budget to be applied to the current month or following months.
+- [x] User can add a transaction with a pre-defined hash tag
+- [x] User can set up a monthly budget
+- [x] User can edit their monthly budget to be applied to the current month or following months.
 - [x] User can sign out
 
 **Optional Nice-to-have Stories**
@@ -97,17 +97,17 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
 
 ## Schema 
 ### Models
-#### Users
+#### User
 
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
-   | UserId      | String   | unique user id (default field) |
-   | UserName        | String | User name for login |
-   | Email         | String     | user's email |
-   | Password       | String   | user's password |
-   | Date of Birth | DateTime   | user's date of birth |
-   | First Name    | String   | user's first name |
-   | Last Name     | String | user's last name |
+   | objectId      | String   | unique user id (default field) |
+   | username      | String   | User name for login |
+   | email         | String   | user's email |
+   | password      | String   | user's password |
+   | dob | DateTime | user's date of birth |
+   | firstName    | String   | user's first name |
+   | lastName     | String   | user's last name |
   
    
 #### User_Setting
@@ -147,8 +147,8 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
    | objectId      | String   | unique id for the budget (default field) |
    | User        | Pointer to User | user who created the budget |
    | Hashtag         | Pointer to HashTag     | hashtag that define the type of budget |
-   | Budget Amount       | Number   | budget amount for the hashtag |
-   | Month Year | DateTime   | Month and year for which the budget is for |
+   | Budget_Amount       | Number   | budget amount for the hashtag |
+   | Year_Month | DateTime   | Month and year for which the budget is for |
 
 
 ### Networking
@@ -303,10 +303,9 @@ Tracks expenses of an individual to better manage their cashflow. The app can id
             }
          }
        ```
-         
 
-
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+### Final Submission - Unit 14 Milestone
+<img src="unit14-finalwalkthrough.gif" width=200>
 
 ### Current Progress - Unit 13 Milestone
 <img src="unit13-milestone4.gif" width=200>

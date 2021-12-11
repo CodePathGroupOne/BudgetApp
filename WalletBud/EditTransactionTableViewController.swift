@@ -9,7 +9,7 @@ import UIKit
 import Parse
 import DropDown
 
-class EditTransactionTableViewController: UITableViewController, UITextFieldDelegate {
+class EditTransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var vendorField: UITextField!
     @IBOutlet weak var date: UIDatePicker!
