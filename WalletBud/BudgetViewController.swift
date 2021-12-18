@@ -193,6 +193,7 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
             if (budget.count > 0){
                 let val = budget[0]["Budget_Amount"] as! Double
                 self.budget_id[tableRow] = budget[0].objectId as! String
+                self.hashtags_budget[tableRow] = Decimal(val)
                 res = Decimal(val)
                 
             }
