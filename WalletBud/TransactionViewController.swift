@@ -16,8 +16,34 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         return transactions.count
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //This function will be called when returning from edit/add transaction view controller
+        // The viewWillDisapper method needs to be overridden in those view controllers.
+              super.viewWillAppear(animated)
+              //refresh
+        print("I am being called")
+        let currentUser:PFUser = PFUser.current()!
+        let query = PFQuery(className:"Transactions")
+        query.includeKey("hashTag")
+        query.whereKey("User", equalTo: currentUser)
+        query.addDescendingOrder("Transaction_date")
+        query.limit = 10
+        query.findObjectsInBackground{
+            (result,error) in
+            if error == nil {
+                self.transactions = result!
+                self.tableView.reloadData()
+            }
+            else{
+                print("There is an issue retrieveing recent transactions. ")
+            }
+        }
+        clearOnAppearance()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("I am called")
         let currentUser:PFUser = PFUser.current()!
         let query = PFQuery(className:"Transactions")
         query.includeKey("hashTag")

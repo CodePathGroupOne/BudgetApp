@@ -34,6 +34,12 @@ class AddTransactionTableViewController: UITableViewController, UITextFieldDeleg
     
     var hashtagSelectedIndex = Int()
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // This will call view willappear method from previous view controller
+        presentingViewController?.viewWillAppear(true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let query = PFQuery(className: "Common_hashtags")

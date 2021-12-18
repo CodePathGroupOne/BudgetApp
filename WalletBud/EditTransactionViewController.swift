@@ -36,7 +36,11 @@ class EditTransactionViewController: UIViewController {
     
     var transaction : PFObject!
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // This will call view willappear method from previous view controller
+        presentingViewController?.viewWillAppear(true)
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let query = PFQuery(className: "Common_hashtags")
@@ -102,6 +106,7 @@ class EditTransactionViewController: UIViewController {
                 updatetransaction.saveInBackground()
                 //Show some error to user
                 self.dismiss(animated: true, completion: nil)
+            
                 
             }
         }
