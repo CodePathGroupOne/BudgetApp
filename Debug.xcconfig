@@ -1,0 +1,11 @@
+//
+//  Debug.xcconfig
+//  Pods
+//
+//  Created by Ryan Johnson on 12/17/21.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+BUNDLE_ID = com.codepath.demoday.WalletBud

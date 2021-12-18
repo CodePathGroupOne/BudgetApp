@@ -41,3 +41,7 @@ DerivedData/
 *.xcuserstate
 **/xcuserdata/
 **/*.xcuserstate
+*.xcuserstate
+*.xcconfig
+*.pbxproj
+*.plist
