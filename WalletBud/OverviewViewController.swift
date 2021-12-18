@@ -13,73 +13,90 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topView: UIView!
+    
+    //Create Charts
     var pieChart = PieChartView()
     var barChart = BarChartView()
+    
     var budget_by_hashtag = [String:Decimal]()
     var transaction_by_hashtag = [String:Decimal]()
     var hashtags = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view did loaded")
+        //Configure properties such as Legends and Axis
+        self.setUpBarChartProperties()
+        self.setUpPieChartProperties()
+       // self.barChart.delegate = self
+        //self.pieChart.delegate = self
         
-        self.barChart.delegate = self
-        self.pieChart.delegate = self
-        
-        self.createPieChart()
-        self.createBarChart()
-        
-        self.pieChart.data?.notifyDataChanged()
-        self.pieChart.notifyDataSetChanged()
-        self.barChart.data?.notifyDataChanged()
-        self.barChart.notifyDataSetChanged()
-        
-        getCurrentMonthMetric(metric: "Budget")
-        getCurrentMonthMetric(metric: "Transactions")
-        
-        barChart.noDataText = "Fetching data from the server"
-        
-        self.pieChart.data?.notifyDataChanged()
-        self.pieChart.notifyDataSetChanged()
-        self.barChart.data?.notifyDataChanged()
-        self.barChart.notifyDataSetChanged()
-        
-        self.barChart.setNeedsDisplay()
-        self.pieChart.setNeedsDisplay()
-        
+   
+         
+    }
+    
+    private func setUpPieChartProperties(){
+        self.pieChart.frame = CGRect(x:0,y:0,width:
+                                    self.topView.frame.size.width,
+                                height: self.topView.frame.size.height)
+        self.pieChart.center = self.topView.center
+        self.pieChart.legend.enabled = false
+        //pieChart.radius  =
+        self.pieChart.drawEntryLabelsEnabled = false
+    }
+    private func setUpBarChartProperties(){
         //Legend
-        let legend = barChart.legend
+        let legend = self.barChart.legend
         legend.enabled = true
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
         legend.orientation = .vertical
         legend.drawInside = true
-        legend.yOffset = 10.0;
+        legend.yOffset = 2.0;
         legend.xOffset = 10.0;
         legend.yEntrySpace = 0.0;
         
+        //Axis
         let formatter = NumberFormatter()
         formatter.negativePrefix = " $"
         formatter.positivePrefix = " $"
         
-        let yaxis = barChart.leftAxis
-                    yaxis.spaceTop = 0.35
-                    yaxis.axisMinimum = 0
-                    yaxis.drawGridLinesEnabled = false
-                    yaxis.valueFormatter = DefaultAxisValueFormatter(formatter: formatter)
-       
-        // Do any additional setup after loading the view.
-        let barAppearance = UINavigationBarAppearance()
-         
-        barAppearance.configureWithOpaqueBackground()
-        barAppearance.backgroundColor = UIColor(named: "GreenBar")!
+        let yaxis = self.barChart.leftAxis
+        yaxis.spaceTop = 0.35
+        yaxis.axisMinimum = 0
+        yaxis.drawGridLinesEnabled = false
+        yaxis.valueFormatter = DefaultAxisValueFormatter(formatter: formatter)
         
-        navigationController?.navigationBar.standardAppearance = barAppearance
-        navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-         
+        //Others
+        self.barChart.frame = CGRect(x:0,y:0,width:
+                                    self.bottomView.frame.size.width,
+                                height: self.bottomView.frame.size.height)
+        self.barChart.center = self.bottomView.center
+
+        //view.addSubview(barChart)
+        self.barChart.noDataText = "Fetching data. Go to other tab"
+        
+
+        
+        
+        //barChart.xAxis.granularityEnabled = true
+        self.barChart.xAxis.granularity = 1
+        self.barChart.xAxis.centerAxisLabelsEnabled = true
+        // barChart.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: formatter)
+      
+        self.barChart.xAxis.labelPosition = .bottom
+        self.barChart.xAxis.labelRotationAngle = 280
+        self.barChart.xAxis.drawGridLinesEnabled = true
+        self.barChart.xAxis.labelCount = 10
+        self.barChart.xAxis.granularityEnabled = true
+        self.barChart.rightAxis.enabled = false
+        
     }
     
     func getCurrentMonthMetric( metric: String) {
+        //Emptying Transaction by hashtag
+        
+        
         // Get current budget
         let currentUser:PFUser = PFUser.current()!
         let month_year = getCurrentandNextMonthAndYear()
@@ -92,13 +109,15 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         
         
         query.whereKey("User", equalTo: currentUser)
-        query.addAscendingOrder("Hashtag")
+        
         if metric == "Budget"{
             query.includeKey("Hashtag")
+            query.addAscendingOrder("Hashtag.createdAt")
             query.whereKey("Year_Month", equalTo: current_month)
             
         }else if metric == "Transactions"{
             query.includeKey("hashTag")
+            query.addAscendingOrder("hashTag.createdAt")
             query.whereKey("Transaction_date", greaterThanOrEqualTo: current_month)
             query.whereKey("Transaction_date", lessThan: next_month)
         }
@@ -123,25 +142,27 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
                 }
                 //print(self.budget_by_hashtag)
                 //print(self.transaction_by_hashtag)
+                //Bar Chart DAta update
+                self.updateBarChartData()
+                self.barChart.data?.notifyDataChanged()
+                self.barChart.notifyDataSetChanged()
+                
+                //PieChart Data update
+                self.updatePieChartData()
+                self.pieChart.data?.notifyDataChanged()
+                self.pieChart.notifyDataSetChanged()
             }
             else {
                 print("There is an issue retrieveing recent transactions. ")
             }
+            print(self.transaction_by_hashtag)
+            
         }
     }
     
-    private func createPieChart()
+    private func updatePieChartData()
     {
-        // Create Pie Chart
-        pieChart.frame = CGRect(x:0,y:0,width:
-                                    self.topView.frame.size.width,
-                                height: self.topView.frame.size.height)
-        pieChart.center = self.topView.center
-        pieChart.legend.enabled = false
-        //pieChart.radius  =
-        pieChart.drawEntryLabelsEnabled = false
-        
-        view.addSubview(pieChart)
+       
         //Populate data
         var totalBudget = 0.00
         var totalTransaction = 0.00
@@ -151,12 +172,11 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         }
         
         for (key, value) in self.transaction_by_hashtag{
-            
             totalTransaction += Double(truncating: value as NSNumber)
         }
         let totalRemaining = totalBudget - totalTransaction
         let expense_percent = totalTransaction/totalBudget * 100
-        pieChart.centerText = String(format: "%.2f",expense_percent) + "%" + "\nSpent"
+        self.pieChart.centerText = String(format: "%.2f",expense_percent) + "%" + "\nSpent"
         //entries for pie chart
         entries.append(ChartDataEntry(x:Double(1),y:totalTransaction))
         entries.append(ChartDataEntry(x:Double(2),y:totalRemaining))
@@ -174,44 +194,13 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         set.colors = colors
         //set.colors = ChartColorTemplates.pastel()
         let data = PieChartData(dataSet: set)
-        pieChart.data = data
-        
-        pieChart.data?.notifyDataChanged()
-        pieChart.notifyDataSetChanged()
+        self.pieChart.data = data
+        view.addSubview(self.pieChart)
+     
     }
     
-    private func createBarChart() {// Bar Chart
-        barChart.frame = CGRect(x:0,y:0,width:
-                                    self.bottomView.frame.size.width,
-                                height: self.bottomView.frame.size.height)
-        barChart.center = self.bottomView.center
-
-        //view.addSubview(barChart)
-        barChart.noDataText = "Fetching data. Go to other tab"
-        
-        //Configure the axis
-        let formatter = NumberFormatter()
-        formatter.negativeSuffix = " $"
-        formatter.positiveSuffix = " $"
-        
-        
-        //barChart.xAxis.granularityEnabled = true
-        barChart.xAxis.granularity = 1
-        barChart.xAxis.centerAxisLabelsEnabled = true
-        // barChart.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: formatter)
-      
-        barChart.xAxis.labelPosition = .bottom
-        barChart.xAxis.labelRotationAngle = 280
-        barChart.xAxis.drawGridLinesEnabled = true
-        barChart.xAxis.labelCount = 10
-        barChart.xAxis.granularityEnabled = true
-        barChart.rightAxis.enabled = false
-        
-        
-        barChart.chartDescription?.enabled = false
-        //barChart.setVisibleXRangeMaximum(Double(5.0))
- 
-       var bar_entries_budget = [BarChartDataEntry]()
+    private func updateBarChartData() {// Bar Chart
+        var bar_entries_budget = [BarChartDataEntry]()
         var bar_entries_transaction = [BarChartDataEntry]()
         var x = 0
         self.hashtags = ["DUMMY"] // because formatter start at index 1. 
@@ -230,9 +219,9 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         }
      
         if self.budget_by_hashtag.count != 0{
-            print(self.hashtags)
-            print(bar_entries_budget)
-            print(bar_entries_transaction)
+            //print(self.hashtags)
+            //print(bar_entries_budget)
+            //print(bar_entries_transaction)
             barChart.xAxis.valueFormatter =  IndexAxisValueFormatter(values: self.hashtags)
             barChart.notifyDataSetChanged()
         }
@@ -241,12 +230,13 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         let dataSets: [BarChartDataSet] = [bar_budget_set,bar_transaction_set]
         bar_budget_set.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
         //bar_budget_set.colors = ChartColorTemplates.pastel()
+        
         let bar_data = BarChartData(dataSets: dataSets)
        
         
         let groupSpace = 0.3
-                let barSpace = 0.05
-                let barWidth = 0.3
+        let barSpace = 0.05
+        let barWidth = 0.3
         
         bar_data.barWidth = barWidth
         barChart.xAxis.axisMinimum = Double(1.0)
@@ -262,25 +252,26 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         barChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
         view.addSubview(barChart)
         
-        barChart.data?.notifyDataChanged()
-        barChart.notifyDataSetChanged()
     }
  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    
+        getCurrentMonthMetric(metric: "Budget")
+        getCurrentMonthMetric(metric: "Transactions")
+        //self.createPieChart()
         
-        self.createPieChart()
-        self.createBarChart()
+        //self.pieChart.data?.notifyDataChanged()
+        //self.pieChart.notifyDataSetChanged()
         
-        let barAppearance = UINavigationBarAppearance()
-         
-        barAppearance.configureWithOpaqueBackground()
-        barAppearance.backgroundColor = UIColor(named: "GreenBar")!
         
-        navigationController?.navigationBar.standardAppearance = barAppearance
-        navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
+        
+        
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.transaction_by_hashtag.removeAll()
     }
     
     func getCurrentandNextMonthAndYear() -> Array<String>{
@@ -311,15 +302,6 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         return df.date(from: date)
     }
     
-    
-    @IBAction func onSignOut(_ sender: Any) {
-        PFUser.logOut()
-        let main = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
-        guard  let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let delegate = windowScene.delegate as? SceneDelegate else { return}
-        
-        delegate.window?.rootViewController = loginViewController
-    }
     
     /*
      // Read transactions

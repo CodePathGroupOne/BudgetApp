@@ -21,7 +21,6 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
         // The viewWillDisapper method needs to be overridden in those view controllers.
               super.viewWillAppear(animated)
               //refresh
-        print("I am being called")
         let currentUser:PFUser = PFUser.current()!
         let query = PFQuery(className:"Transactions")
         query.includeKey("hashTag")
@@ -43,7 +42,6 @@ class TransactionViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("I am called")
         let currentUser:PFUser = PFUser.current()!
         let query = PFQuery(className:"Transactions")
         query.includeKey("hashTag")
