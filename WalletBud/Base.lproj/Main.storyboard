@@ -716,21 +716,21 @@
                             <tableViewSection id="iK3-Fm-GOO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameField" id="MDl-Qo-P9E" customClass="AddTransactionCell" customModule="WalletBud" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="18" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="18" width="343" height="44.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MDl-Qo-P9E" id="h6g-F3-lNM">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="cXM-Ag-XoN">
-                                                    <rect key="frame" x="16" y="10.33333333333333" width="30" height="24.000000000000007"/>
+                                                    <rect key="frame" x="16" y="10.33333333333333" width="30" height="24.666666666666686"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="Qui-Qd-syJ"/>
                                                     </constraints>
                                                     <imageReference key="image" image="person.circle" catalog="system" symbolScale="large"/>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Paid to" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nCT-Gx-Vp3">
-                                                    <rect key="frame" x="54" y="0.0" width="273" height="44.333333333333336"/>
+                                                    <rect key="frame" x="54" y="0.0" width="273" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -747,21 +747,21 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="amountField" id="sHw-YZ-4oT" customClass="AddTransactionCell" customModule="WalletBud" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="62" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="62.666667938232422" width="343" height="44.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sHw-YZ-4oT" id="IDU-rE-NBb">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7FC-CY-uBF">
-                                                    <rect key="frame" x="16" y="10.33333333333333" width="30" height="24.000000000000007"/>
+                                                    <rect key="frame" x="16" y="10.33333333333333" width="30" height="24.666666666666686"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="q5G-ir-0gq"/>
                                                     </constraints>
                                                     <imageReference key="image" image="dollarsign.circle" catalog="system" symbolScale="large"/>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M7N-e6-lK9">
-                                                    <rect key="frame" x="54" y="0.0" width="273" height="44.333333333333336"/>
+                                                    <rect key="frame" x="54" y="0.0" width="273" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -782,7 +782,7 @@
                             <tableViewSection id="gOL-AC-opk">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dateField" id="c3r-j7-eAK" customClass="AddTransactionCell" customModule="WalletBud" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="142" width="343" height="40"/>
+                                        <rect key="frame" x="16" y="143.33333587646484" width="343" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c3r-j7-eAK" id="KyL-U6-wTJ">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -820,7 +820,7 @@
                             <tableViewSection id="NTp-hX-e48">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="budgetCategory" id="2c4-rv-pdH" customClass="AddTransactionCell" customModule="WalletBud" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="218" width="343" height="48.333332061767578"/>
+                                        <rect key="frame" x="16" y="219.33333587646484" width="343" height="48.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2c4-rv-pdH" id="nxs-zH-gRp">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="48.333332061767578"/>
@@ -874,7 +874,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesField" rowHeight="100" id="yeE-MP-HsS" customClass="AddTransactionCell" customModule="WalletBud" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="266.33333206176758" width="343" height="100"/>
+                                        <rect key="frame" x="16" y="267.66666793823242" width="343" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yeE-MP-HsS" id="9DG-Da-K9o">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
@@ -967,7 +967,7 @@
                                 <rect key="frame" x="0.0" y="-27" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="LrX-dn-nu0">
-                                    <rect key="frame" x="0.0" y="110" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="110.33333206176758" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <items>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WjE-PN-qww"/>
@@ -1057,7 +1057,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vbZ-b2-MNi">
-                            <rect key="frame" x="0.0" y="383" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="382.66667175292969" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="5sA-Ja-beT"/>
@@ -1413,6 +1413,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="1vJ-89-6S9" id="CZ3-e9-Akx"/>
+                        <outlet property="usernameField" destination="vrR-Dt-jNP" id="8Pf-fz-Cbu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20n-4W-VCI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

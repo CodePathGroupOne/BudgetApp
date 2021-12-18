@@ -12,6 +12,7 @@ class SettingsTableViewController: UITableViewController {
 
     @IBOutlet var settingsTableView: UITableView!
     
+    @IBOutlet weak var usernameField: UILabel!
     @IBAction func onSignOut(_ sender: Any) {
      
         PFUser.logOut()
@@ -23,7 +24,7 @@ class SettingsTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        usernameField.text = PFUser.current()?.username
         // Do any additional setup after loading the view.
         self.tableView.contentInset.bottom = 100
     }
