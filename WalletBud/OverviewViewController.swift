@@ -165,7 +165,7 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         //Populate data
         var totalBudget = 0.00
         var totalTransaction = 0.00
-        var entries = [ChartDataEntry]()
+        var entries = [PieChartDataEntry]()
         for (key, value) in self.budget_by_hashtag{
             totalBudget += Double(truncating: value as NSNumber)
         }
@@ -180,13 +180,11 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         let expense_percent = totalTransaction/totalBudget * 100
         self.pieChart.centerText = String(format: "%.2f",expense_percent) + "%" + "\nSpent"
         //entries for pie chart
-        entries.append(ChartDataEntry(x:Double(1),y:totalTransaction))
-        entries.append(ChartDataEntry(x:Double(2),y:totalRemaining))
+        entries.append(PieChartDataEntry(value:totalTransaction,label: "Spent"))
+        entries.append(PieChartDataEntry(value:totalRemaining,label: "Remaining"))
         
-        
-        
-        let set = PieChartDataSet(entries: entries, label: "Total Budget")
-        let legendsPoint = ["Spent","Remaining"]
+      
+        let set = PieChartDataSet(entries: entries, label: ":Total Budget")
     
         
         var colors: [UIColor] = []
@@ -196,8 +194,14 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         set.colors = colors
      
         let data = PieChartData( dataSet: set)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        //formatter.currencyCode = "$"
+        //formatter.internationalCurrencySymbol = "$"
+        formatter.currencySymbol = "$"
+        formatter.maximumFractionDigits = 0
         
-   
+        data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         self.pieChart.data = data
         view.addSubview(self.pieChart)
      
