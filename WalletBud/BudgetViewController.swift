@@ -91,6 +91,8 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func onBudgetUpdate(_ sender: Any) {
+        
+        var message = ""
         //print("This button is working")
         let currentUser:PFUser = PFUser.current()!
         let query = PFQuery(className:"Budget")
@@ -106,13 +108,21 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
                 for i in 0...self.hashtags.count-1{
                     updateBudget(id: self.budget_id[i], budget_amount: self.hashtags_budget[i])
                 }
+                message = "Budget Updated"
                 
             }else{
                 for i in 0...self.hashtags.count-1{
                     createBudget(currentUser: currentUser, hashtag: self.hashtags[i], hashtag_budget: self.hashtags_budget[i])
                 }
+                message = "Budget Created"
                 
             }
+            let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+            
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:nil)
+            alertController.addAction(alertAction)
+            
+            present(alertController, animated: true, completion: nil)
             
         }
         catch {
