@@ -40,7 +40,7 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
                                     self.topView.frame.size.width,
                                 height: self.topView.frame.size.height)
         self.pieChart.center = self.topView.center
-        self.pieChart.legend.enabled = false
+        self.pieChart.legend.enabled = true
         //pieChart.radius  =
         self.pieChart.drawEntryLabelsEnabled = false
     }
@@ -77,7 +77,6 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         self.barChart.noDataText = "Fetching data. Go to other tab"
         
 
-        
         
         //barChart.xAxis.granularityEnabled = true
         self.barChart.xAxis.granularity = 1
@@ -174,7 +173,10 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         for (key, value) in self.transaction_by_hashtag{
             totalTransaction += Double(truncating: value as NSNumber)
         }
-        let totalRemaining = totalBudget - totalTransaction
+        var totalRemaining = totalBudget - totalTransaction
+        if totalRemaining < 0 {
+            totalRemaining = 0
+        }
         let expense_percent = totalTransaction/totalBudget * 100
         self.pieChart.centerText = String(format: "%.2f",expense_percent) + "%" + "\nSpent"
         //entries for pie chart
@@ -183,17 +185,19 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         
         
         
-        let set = PieChartDataSet(entries: entries)
+        let set = PieChartDataSet(entries: entries, label: "Total Budget")
+        let legendsPoint = ["Spent","Remaining"]
+    
         
         var colors: [UIColor] = []
         colors.append(UIColor(red: 0.36, green: 0.69, blue: 0.46, alpha: 1.00)) // use the GreenBar color
         colors.append(UIColor.gray)
         
-        
-        
         set.colors = colors
-        //set.colors = ChartColorTemplates.pastel()
-        let data = PieChartData(dataSet: set)
+     
+        let data = PieChartData( dataSet: set)
+        
+   
         self.pieChart.data = data
         view.addSubview(self.pieChart)
      
@@ -246,6 +250,8 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         
         
         bar_data.groupBars(fromX: Double(1.0), groupSpace: groupSpace, barSpace: barSpace)
+        //Doesnot display value above or below the bars
+        bar_data.setDrawValues(false)
         
         barChart.data = bar_data
         
