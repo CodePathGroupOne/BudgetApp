@@ -31,7 +31,16 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
        // self.barChart.delegate = self
         //self.pieChart.delegate = self
         
-   
+        let barAppearance = UINavigationBarAppearance()
+        
+        barAppearance.configureWithOpaqueBackground()
+        barAppearance.backgroundColor = UIColor(named: "GreenBar")!
+        
+        barAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        barAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.standardAppearance = barAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = barAppearance
          
     }
     

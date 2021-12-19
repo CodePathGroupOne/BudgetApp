@@ -117,7 +117,7 @@ class BudgetViewController: UIViewController ,UITableViewDelegate, UITableViewDa
                 message = "Budget Created"
                 
             }
-            let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: message, message: "", preferredStyle: UIAlertController.Style.alert)
             
             let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:nil)
             alertController.addAction(alertAction)
